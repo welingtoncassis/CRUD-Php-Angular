@@ -3,7 +3,7 @@
 require 'database.php';
 
 $clientes = [];
-$sql = "SELECT Nome, cpf, endereco FROM clientes";
+$sql = "SELECT nome, cpf, endereco FROM clientes";
 
 if($result = mysqli_query($con, $sql))
 {
