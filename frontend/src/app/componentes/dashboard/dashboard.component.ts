@@ -15,9 +15,36 @@ export class DashboardComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.readClientes().subscribe( (clientes: Clientes[]) =>{
+    this.apiService.readClientes().subscribe( (clientes: Clientes[]) => {
       this.clientes = clientes;
       console.log(this.clientes);
+    });
+  }
+
+  createOrUpdateCliente(form) {
+    if (/*this.selectedCliente &&*/ this.selectedCliente.endereco) {
+
+      form.value.nome = this.selectedCliente.nome;
+      this.apiService.updateCliente(form.value).subscribe((cliente: Clientes) => {
+        console.log('Cliente updated' , cliente);
+      });
+
+    } else {
+
+      this.apiService.createCliente(form.value).subscribe((cliente: Clientes) => {
+        console.log('Cliente criado', cliente);
+      });
+    }
+
+  }
+
+  selectCliente(cliente: Clientes) {
+    this.selectedCliente = cliente;
+  }
+
+  deleteCliente(cpf) {
+    this.apiService.deleteCliente(cpf).subscribe((cliente: Clientes) => {
+      console.log('Cliente deleted, ', cliente);
     });
   }
 

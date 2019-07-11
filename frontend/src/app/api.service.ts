@@ -16,14 +16,14 @@ export class ApiService {
     return this.httpClient.get<Clientes[]>(`${this.PHP_API_SERVER}/api/read.php`);
   }
 
-  createPolicy(cliente: Clientes): Observable<Clientes>{
+  createCliente(cliente: Clientes): Observable<Clientes> {
     return this.httpClient.post<Clientes>(`${this.PHP_API_SERVER}/api/create.php`, cliente);
   }
 
-  updatePolicy(cliente: Clientes){
+  updateCliente(cliente: Clientes) {
     return this.httpClient.put<Clientes>(`${this.PHP_API_SERVER}/api/update.php`, cliente);  }
 
-  deletePolicy(cpfCliente: string){
+  deleteCliente(cpfCliente: string) {
     return this.httpClient.delete<Clientes>(`${this.PHP_API_SERVER}/api/delete.php/?cpf=${cpfCliente}`);
   }
 

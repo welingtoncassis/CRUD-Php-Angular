@@ -15,12 +15,12 @@ if(isset($postdata) && !empty($postdata))
   }
 
   // Sanitize.
-  $endereco    = mysqli_real_escape_string($con, $request->endereco);
+  $endereco = mysqli_real_escape_string($con, $request->endereco);
   $nome = mysqli_real_escape_string($con, trim($request->nome));
   $cpf = mysqli_real_escape_string($con, $request->cpf);
 
   // Update.
-  $sql = "UPDATE `policies` SET `nome`='$nome',`cpf`='$cpf' WHERE `endereco` = '{$endereco}' LIMIT 1";
+  $sql = "UPDATE `clientes` SET `nome`='$nome',`cpf`='$cpf', `endereco` = '$endereco' WHERE `cpf` = '{$cpf}'";
 
   if(mysqli_query($con, $sql))
   {

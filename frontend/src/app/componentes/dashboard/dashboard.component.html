@@ -1,1 +1,37 @@
-<p>dashboard works!</p>
+<h1>Clientes</h1>
+<div>
+
+  <table border='1' width='100%' style='border-collapse: collapse;'>
+    <tr>
+      <th>CPF</th>
+      <th>Nome</th>
+      <th>EEndereço</th>
+      <th>Operações</th>
+
+    </tr>
+
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.endereco }}</td>
+      <td>
+        <button (click)="deleteCliente(cliente.cpf)">Delete</button>
+        <button (click)="selectCliente(cliente)">Update</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <form #f = "ngForm">
+    <label>Nome</label>
+    <input type="text" name="nome" [(ngModel)] = "selectedCliente.nome">
+    <br>
+    <label>CPF</label>
+    <input type="text" name="cpf" [(ngModel)] = "selectedCliente.cpf">
+    <br>
+    <label>Endereço</label>
+    <input type="text" name="endereco" [(ngModel)] = "selectedCliente.endereco">
+    <br>
+    <input type="button" (click)="createOrUpdateCliente(f)" value="Create or Update Cliente">
+  </form>
+</div>  

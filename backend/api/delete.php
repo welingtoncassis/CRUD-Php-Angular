@@ -11,7 +11,7 @@ if(!$cpf)
 }
 
 // Delete.
-$sql = "DELETE FROM `policies` WHERE `cpf` ='{$cpf}' LIMIT 1";
+$sql = "DELETE FROM `clientes` WHERE `cpf` ='{$cpf}' LIMIT 1";
 
 if(mysqli_query($con, $sql))
 {
